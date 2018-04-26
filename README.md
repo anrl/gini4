@@ -5,7 +5,7 @@
 The GINI Toolkit is free software. Please see the file COPYING for copyright information.
 Please read REPORT in this repository to know the functionalities.
 
-Basic Installation - Ubuntu 16.04 LTS (32-bit)
+Basic Installation - Ubuntu 16.04 LTS
 ==========================
 
 <b>Ubuntu 14.04 is having some problems with the current version!</b>

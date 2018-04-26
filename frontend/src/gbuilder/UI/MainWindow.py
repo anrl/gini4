@@ -76,18 +76,21 @@ class MainWindow(Systray):
         self.center()
         self.saveLayout(environ["config"] + "defaultLayout")
 
-        self.setStyleSheet("""QToolTip { 
-                           background-color: black; 
-                           color: white; 
+        self.setStyleSheet("""QToolTip {
+                           background-color: black;
+                           color: white;
                            border: black solid 1px
-                           }""")
+                           }
+                           QMenu {
+                           color: white;
+        }""")
 
         self.defaultLayout = True
         if options["restore"]:
             self.loadLayout()
             self.defaultLayout = False
 
-        
+
 
         self.loadProject()
         atexit.register(self.cleanup)
