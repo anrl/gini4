@@ -431,45 +431,46 @@ env.Alias('install-gloader', bindir + '/gloader')
 env.Alias('install-gloader', bindir + '/gserver')
 env.Alias('install-gloader', sharedir + '/gloader' + '/gloader.dtd')
 env.Alias('install','install-gloader')
+
 ##########
 # Kernel #
 ##########
 
-kernel_dir = backend_dir + "/kernel"
-kernel = kernel_dir + "/linux-2.6.26.1"
-alt_kernel = kernel_dir + "/linux-2.6.25.10"
-
-# Copy kernel and glinux loader into bin and set executable
-env.Install(libdir + '/kernel/',kernel_dir + '/glinux')
-post_chmod(libdir + '/kernel/glinux')
-env.PythonEnvFile(bindir + '/glinux',libdir + '/kernel/glinux')
-post_chmod(bindir + '/glinux')
-
-env.Install(libdir + '/kernel/', kernel_dir + '/linux-2.6.26.1')
-post_chmod(libdir + '/kernel/linux-2.6.26.1')
-env.PythonEnvFile(bindir + '/linux-2.6.26.1',libdir + '/kernel/linux-2.6.26.1')
-post_chmod(bindir + '/linux-2.6.26.1')
-
-env.Alias('install-kernel', bindir + '/glinux')
-env.Alias('install-kernel', bindir + '/linux-2.6.26.1')
-env.Clean(libdir + '/kernel/',libdir + '/kernel/')
-env.Alias('install','install-kernel')
+# kernel_dir = backend_dir + "/kernel"
+# kernel = kernel_dir + "/linux-2.6.26.1"
+# alt_kernel = kernel_dir + "/linux-2.6.25.10"
+#
+# # Copy kernel and glinux loader into bin and set executable
+# env.Install(libdir + '/kernel/',kernel_dir + '/glinux')
+# post_chmod(libdir + '/kernel/glinux')
+# env.PythonEnvFile(bindir + '/glinux',libdir + '/kernel/glinux')
+# post_chmod(bindir + '/glinux')
+#
+# env.Install(libdir + '/kernel/', kernel_dir + '/linux-2.6.26.1')
+# post_chmod(libdir + '/kernel/linux-2.6.26.1')
+# env.PythonEnvFile(bindir + '/linux-2.6.26.1',libdir + '/kernel/linux-2.6.26.1')
+# post_chmod(bindir + '/linux-2.6.26.1')
+#
+# env.Alias('install-kernel', bindir + '/glinux')
+# env.Alias('install-kernel', bindir + '/linux-2.6.26.1')
+# env.Clean(libdir + '/kernel/',libdir + '/kernel/')
+# env.Alias('install','install-kernel')
 
 ##############
 # FileSystem #
 ##############
-
-filesystem_dir = backend_dir + "/fs"
-
-filesystem_src = filesystem_dir + "/GiniLinux-fs-1.0q.tar.gz"
-
-# Unzip the gini UML fs into the root gini directory
-# TODO this is really bad
-env.Command(sharedir + '/filesystem/root_fs_beta2', filesystem_src, "tar -xzf " + filesystem_dir + "/GiniLinux-fs-1.0q.tar.gz --atime-preserve; cp -p GiniLinux-fs-1.0q $TARGET;rm GiniLinux-fs-1.0q")
-
-env.Alias('install-filesystem',sharedir + '/filesystem/root_fs_beta2')
-env.Clean(sharedir + '/filesystem',sharedir + '/filesystem')
-env.Alias('install','install-filesystem')
+#
+# filesystem_dir = backend_dir + "/fs"
+#
+# filesystem_src = filesystem_dir + "/GiniLinux-fs-1.0q.tar.gz"
+#
+# # Unzip the gini UML fs into the root gini directory
+# # TODO this is really bad
+# env.Command(sharedir + '/filesystem/root_fs_beta2', filesystem_src, "tar -xzf " + filesystem_dir + "/GiniLinux-fs-1.0q.tar.gz --atime-preserve; cp -p GiniLinux-fs-1.0q $TARGET;rm GiniLinux-fs-1.0q")
+#
+# env.Alias('install-filesystem',sharedir + '/filesystem/root_fs_beta2')
+# env.Clean(sharedir + '/filesystem',sharedir + '/filesystem')
+# env.Alias('install','install-filesystem')
 
 #########
 # Vgini #

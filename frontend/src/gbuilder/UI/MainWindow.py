@@ -85,6 +85,7 @@ class MainWindow(Systray):
                            color: white;
         }""")
 
+
         self.defaultLayout = True
         if options["restore"]:
             self.loadLayout()
@@ -1534,7 +1535,7 @@ class DebugWindow(QtGui.QWidget):
     def fill(self):
         scene = mainWidgets["canvas"].scene()
         for i in range(125):
-            scene.addItem(UML())
+            scene.addItem(Mach())
 
     def execute(self):
         canvas = mainWidgets["canvas"]

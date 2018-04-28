@@ -291,7 +291,7 @@ class Tutorial(View):
                      3 * math.pi / 4, QtCore.QPointF(155,-155))
         self.addStep("The log window provides messages to let you know if certain\ncommands have been executed properly.  If the compile was\nsuccessful, a message should indicate so.",
                      3 * math.pi / 2, QtCore.QPointF(0,145))
-        self.addStep("The tab name indicates the current project you have open.  The\npurpose of a project is to share UMLs between topologies.  The\nproject name determines where the topology data is stored.",
+        self.addStep("The tab name indicates the current project you have open.  The\npurpose of a project is to share Machs between topologies.  The\nproject name determines where the topology data is stored.",
                      3 * math.pi / 4, QtCore.QPointF(-155,-145))
         self.addStep("To run this topology, we will need a server which has the\nbackend installed.  Make sure there is a valid server and host name\nin the server options, and then press the start server button.",
                      3 * math.pi / 4, QtCore.QPointF(155,-155))
@@ -304,34 +304,34 @@ class Tutorial(View):
         self.addStep("The tutorial is finished.  Most of the basics have been covered.\nFor more information, please consult the FAQ in the help menu.\nYou can exit the tutorial by closing this topology.",
                      None)
 
-        uml1 = TutorialNode("UML")
-        uml2 = TutorialNode("UML")
-        uml3 = TutorialNode("UML")
+        Mach1 = TutorialNode("Mach")
+        Mach2 = TutorialNode("Mach")
+        Mach3 = TutorialNode("Mach")
         switch = TutorialNode("Switch")
         router = TutorialNode("Router")
         subnet1 = TutorialNode("Subnet")
         subnet2 = TutorialNode("Subnet")
 
         scene = self.scene()
-        scene.addItem(uml1)
-        scene.addItem(uml2)
-        scene.addItem(uml3)
+        scene.addItem(Mach1)
+        scene.addItem(Mach2)
+        scene.addItem(Mach3)
         scene.addItem(switch)
         scene.addItem(router)
         scene.addItem(subnet1)
         scene.addItem(subnet2)
 
-        uml1.setPos(-100, 100)
-        uml2.setPos(0, 100)
-        uml3.setPos(120, 100)
+        Mach1.setPos(-100, 100)
+        Mach2.setPos(0, 100)
+        Mach3.setPos(120, 100)
         switch.setPos(-50, 40)
         router.setPos(0, -80)
         subnet1.setPos(-50, -30)
         subnet2.setPos(50, -30)
 
-        scene.addItem(TutorialEdge(uml1, switch))
-        scene.addItem(TutorialEdge(uml2, switch))
-        scene.addItem(TutorialEdge(uml3, subnet2))
+        scene.addItem(TutorialEdge(Mach1, switch))
+        scene.addItem(TutorialEdge(Mach2, switch))
+        scene.addItem(TutorialEdge(Mach3, subnet2))
         scene.addItem(TutorialEdge(switch, subnet1))
         scene.addItem(TutorialEdge(subnet1, router))
         scene.addItem(TutorialEdge(subnet2, router))

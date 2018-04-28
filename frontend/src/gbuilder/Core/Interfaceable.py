@@ -223,7 +223,7 @@ class Interfaceable(Attachable):
             if interface:
                 target = interface[QtCore.QString("target")]
                 if interface[QtCore.QString("subnet")] == subnet \
-                    and self.device_type == "UML" or self.device_type == "REALM":
+                    and self.device_type == "Mach" or self.device_type == "REALM":
                     self.addEntry(interface[QtCore.QString("mask")],
                                   "",
                                   " ",

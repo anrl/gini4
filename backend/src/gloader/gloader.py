@@ -48,7 +48,7 @@ def startGINI(myGINI, options):
     success = success and createVOFC(myGINI, options)
     print "\nStarting GINI routers..."
     success = success and createVR(myGINI, options)
-    print "\nStarting UMLs..."
+    print "\nStarting Machines..."
     success = success and createVM(myGINI, options)
     print "\nStarting Wireless access points..."
     success = success and createVWR(myGINI, options)
@@ -333,14 +333,18 @@ def createVR(myGINI, options):
     return True
 
 def createVM(myGINI, options):
-    "create UML config file, and start the UML"
+    "create Node config file, and start the Node (Docker)"
+
+    print "Options " % options
+
     makeDir(options.umlDir)
     for uml in myGINI.vm:
-        print "Starting UML %s...\t" % uml.name,
+        print "Starting Mach %s...\t" % uml.name,
         subUMLDir = "%s/%s" % (options.umlDir, uml.name)
         makeDir(subUMLDir)
         # create command line
         command = createUMLCmdLine(uml)
+
         ### ---- process the UML interfaces ---- ###
         # it creates one config for each interface in the /tmp/ directory
         # and returns a string to be attached to the UML exec command line
@@ -687,12 +691,12 @@ def getBaseName(pathName):
 
 def destroyGINI(myGINI, options):
     result = True
-    print "\nTerminating switches..."
+    print "\nTerminating Switches..."
     try:
         result = destroyVS(myGINI.switches, options.switchDir)
     except:
         pass
-    print "\nTerminating routers..."
+    print "\nTerminating Routers..."
     try:
         result = result and destroyVR(myGINI.vr, options.routerDir)
     except:
@@ -717,7 +721,7 @@ def destroyGINI(myGINI, options):
     except:
         pass
 
-    print "\nTerminating UMLs..."
+    print "\nTerminating Machines..."
     try:
         result = result and  destroyVM(myGINI.vm, options.umlDir, 0)
     except:
@@ -876,7 +880,7 @@ def destroyRVM(umls,umlDir):
 def destroyVM(umls, umlDir, mode):
     for uml in umls:
         if mode == 0:
-            print "Stopping UML %s..." % uml.name
+            print "Stopping Machine %s..." % uml.name
         elif mode == 2:
             print "Stopping REALM %s..." % uml.name
             # system("screen -S " + uml.name + "-vtap -p 0 -X stuff \"quitt\n\"")
@@ -911,7 +915,7 @@ def destroyVM(umls, umlDir, mode):
             if (os.access(configFile, os.W_OK)):
                 os.remove(configFile)
         if mode == 0:
-            print "\tStopping UML %s...\t[OK]" % uml.name
+            print "\tStopping Machine %s...\t[OK]" % uml.name
         # elif mode == 2:
         #     print "\tStopping REALM %s...\t[OK]" % uml.name
         else:
